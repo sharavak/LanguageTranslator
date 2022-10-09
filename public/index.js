@@ -32,20 +32,20 @@ clear.addEventListener('click', () => {
 })
 let lanC = '';
 speak.addEventListener('click', async () => {
-   audio.hidden = false;   
+   audio.hidden = true;   
    if (audio.src.includes('false')) {
       let voice = new SpeechSynthesisUtterance(ans.innerHTML);
-      if (l.indexOf(to.value) !== -1)
-      {
+      if (l.indexOf(to.value) !== -1) {
          voice.lang = 'hi-IN';
          speechSynthesis.speak(voice);
-         audio.hidden = true;
+         //audio.hidden = true;
       } else {
          speechSynthesis.speak(voice);
-          audio.hidden = true;
+         //audio.hidden = true;
       }
    
-   }
+   } else
+      audio.play();
 })
 let data;
 submit.addEventListener('submit', async (e) => {
