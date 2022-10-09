@@ -1,0 +1,72 @@
+const express = require('express');
+const app = express();
+const path = require('path');
+const translator = require('translatte');
+const languages = require('./utils/langCode')
+const langCodesArray = require('./utils/lang');
+const axios = require("axios");
+require('dotenv').config();
+function findLang(to)
+{
+   for(let i=0;i<languages.length;i++)
+   {
+      if (languages[i].substring(0, 2) === to)
+         return languages[i];
+   }
+}
+app.use(express.json())
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static(path.join(__dirname,'public')))
+
+function opt(to, ans) {
+    const options = {
+        method: 'GET',
+        url: 'https://voicerss-text-to-speech.p.rapidapi.com/',
+        params: {
+            key: process.env.VOICEAPI,
+            src: ans,
+            hl: to,
+            r: '0',
+            b64: true,
+            f: '8khz_8bit_mono'
+        },
+        headers: {
+            'X-RapidAPI-Key': process.env.RAPIDAPI,
+            'X-RapidAPI-Host': 'voicerss-text-to-speech.p.rapidapi.com'
+        }
+    };
+    return options;
+}
+app.get('/trans', (req, res) => {
+    res.render('trans', {
+        convert:"",answer:""})
+})
+let to=''
+let a=''
+app.post('/trans', async (req, res,) => {
+    translator(req.body.convert, { to: req.body.to }).then(ans => {
+        a = ans.text;
+        to = findLang(req.body.to);
+        console.log(to);
+        if (to === undefined) {
+            res.json({ a, v: 'false' })
+        } 
+        })
+        console.log('fas');
+        await resp(res)
+})
+
+async function resp(res) {
+    try {
+        const options = opt(to, a)
+        let response = await axios.request(options)
+        res.json({ a, v: response.data });
+    } catch(e) {
+        
+    }
+} 
+app.listen(3000, () => {
+    console.log("Listening");
+})

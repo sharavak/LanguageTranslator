@@ -1,0 +1,70 @@
+ body {
+            max-height: 100vh;
+            background-color:rgba(137, 221, 255, 0.521)
+        }
+
+        #submits {
+            width: 9.5rem;
+        }
+
+        #form {
+            width: 100%;
+            max-width: 100%;
+            height: 35rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        #conv {
+            width: 42rem;
+            height: 12rem;
+            font-family: monospace;
+            font-size: 1.3rem;
+        }
+
+        #ans {
+            width: 42rem;
+            height: 12rem;
+            font-family: monospace;
+            font-size: 1.3rem;
+        }
+
+        .controls {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        #speak {
+            margin: 0 5px 0 5px;
+        }
+
+        audio {
+            filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(120%);
+            width: 200px;
+            height: 40px;
+        }
+
+        @media(max-width:750px) {
+
+            #ans,
+            #conv {
+                width: 84vmin;
+                ;
+            }
+        }
+
+        @media(max-width:385px) {
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+#speak{
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+        }
