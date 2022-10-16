@@ -6,7 +6,6 @@ const clear = document.querySelector("#clear");
 const speak = document.querySelector('#speak')
 const submit = document.querySelector("#form");
 const audio = document.querySelector('audio');
-let check = true;
 const languages = lan();
 let d = '';
 const keys = Object.keys(languages);
@@ -27,42 +26,49 @@ swap.addEventListener('click', () => {
 clear.addEventListener('click', () => {
    datas.value = '';
    ans.innerHTML = '';
-   audio.src = '';
-   check = true;
-})
+   audio.src = '';})
 let lanC = '';
 speak.addEventListener('click', async () => {
    audio.hidden = true;   
-   if (audio.src.includes('false')) {
+   if (audio.src.length<=27) {
       let voice = new SpeechSynthesisUtterance(ans.innerHTML);
       if (l.indexOf(to.value) !== -1) {
          voice.lang = 'hi-IN';
          speechSynthesis.speak(voice);
-         //audio.hidden = true;
       } else {
          speechSynthesis.speak(voice);
-         //audio.hidden = true;
       }
-   
-   } else
+   }else if(ans .innerHTML.trim() == '')  {
+      let voice = new SpeechSynthesisUtterance("There is no text to speak");
+      speechSynthesis.speak(voice);
+   }
+   else
       audio.play();
 })
-let data;
-submit.addEventListener('submit', async (e) => {
-    e.preventDefault()
-   check = true;
+submit.addEventListener('submit',  (e) => {
+   e.preventDefault();
    audio.src = '';
+   if (datas.value.trim() == '')
+   {
+      let voice = new SpeechSynthesisUtterance("There is no text to speak");
+      speechSynthesis.speak(voice);
+   }
+   else
+      put();
+})
+async function put() {
    let fdm = new FormData()
    fdm.append(datas.name, datas.value);
    fdm.append(to.name, to.value);
-   const t = new URLSearchParams(fdm);
-   
+   let data = new URLSearchParams(fdm);
     data = await fetch(submit.action, {
-         method: 'POST',
-         body: t
+       method: 'POST',
+       body: data
    });
    let res = await data.json();
-  
-   audio.src = res.v;
+   if (res.v.includes('false'))
+      audio.src = ''
+   else
+      audio.src = res.v;
    ans.innerHTML=res.a
-})
+}
