@@ -101,7 +101,6 @@ const lan = () => {
         'ur': 'Urdu',
         'uz': 'Uzbek',
         'vi': 'Vietnamese',
-        'xh': 'Xhosa',
         'zu': 'Zulu'
     }
 }

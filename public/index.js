@@ -12,7 +12,7 @@ const keys = Object.keys(languages);
 const values = Object.values(languages);
 const l = ['gu', 'kn', 'ml', 'te', 'pa', 'mr']
 let voice=''
-for (let i = 0; i < 107 ; i++)
+for (let i = 0; i < 102 ; i++)
 {
     to.options[i].value = keys[i];
     to.options[i].innerText = values[i];
@@ -45,9 +45,8 @@ speak.addEventListener('click', async () => {
       audio.play();
 })
 submit.addEventListener('submit', (e) => {
-   trans.innerHTML = 'Translating...';
    e.preventDefault();
-   
+    trans.innerHTML = 'Translating...';
    if (ans.innerHTML.trim() === '')
    {
       audio.src = '';
