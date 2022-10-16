@@ -68,8 +68,9 @@ async function put() {
    let res = await data.json();
    if (res.v.includes('false'))
       audio.src = ''
-   else{
+   else {
       audio.src = res.v;
       console.log(res.v);
+   }
    ans.innerHTML=res.a
 }
