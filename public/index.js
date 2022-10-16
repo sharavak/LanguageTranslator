@@ -30,7 +30,7 @@ clear.addEventListener('click', () => {
 let lanC = '';
 speak.addEventListener('click', async () => {
    audio.hidden = true;   
-   if (audio.src.length<=22) {
+   if (audio.src.length<=43) {
       let voice = new SpeechSynthesisUtterance(ans.innerHTML);
       if (l.indexOf(to.value) !== -1) {
          voice.lang = 'hi-IN';
@@ -69,6 +69,6 @@ async function put() {
    if (res.v.includes('false'))
       audio.src = ''
    else
-      audio.src = res.v;
+   audio.src = res.v;
    ans.innerHTML=res.a
 }
