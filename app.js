@@ -39,13 +39,13 @@ function opt(to, ans) {
     };
     return options;
 }
-app.get('/trans', (req, res) => {
+app.get('/', (req, res) => {
     res.render('trans', {
         convert:"",answer:""})
 })
 let to = '';
 let a=''
-app.post('/trans', async (req, res,) => {
+app.post('/', async (req, res,) => {
     await transConv(req, res);
     console.log('as')
     if(to!==false)
