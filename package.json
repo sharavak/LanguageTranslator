@@ -16,7 +16,6 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
-    "google-tts.js": "0.0.2",
     "translatte": "^3.0.1"
   }
 }
