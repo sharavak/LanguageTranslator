@@ -78,7 +78,7 @@ async function resp(res) {
         to = '';
         res.json({ a, v: response.data });
     } catch (e) {
-        console.log("ERROR");
+        console.log("ERROR", response.data );
         res.json({ a, v: "false" });
     }
 } 
