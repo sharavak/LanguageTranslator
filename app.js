@@ -4,6 +4,8 @@ const path = require('path');
 const translator = require('translatte');
 const languages = require('./utils/langCode')
 const axios = require("axios");
+const cors = require('cors')
+app.use(cors());
 require('dotenv').config();
 function findLang(to)
 {
