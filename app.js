@@ -4,6 +4,7 @@ const path = require('path');
 const translator = require('translatte');
 const languages = require('./utils/langCode')
 const axios = require("axios");
+const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 function findLang(to)
 {
@@ -83,5 +84,5 @@ async function resp(res) {
     }
 } 
 app.listen(3000, () => {
-    console.log("Listening");
+     console.log(`App is running on port ${ PORT }`);
 })
