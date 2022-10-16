@@ -49,41 +49,25 @@ let to = '';
 let a=''
 app.post('/', async (req, res,) => {
     await transConv(req, res);
-    console.log('as')
     if(to!==false)
         await resp(res)
 })
-/*async function transConv(req, res){
- translator(req.body.convert, { to: req.body.to }).then(ans => {
-        a = ans.text;
-        console.log(ans);
-        to = findLang(req.body.to);
-        console.log(to);
-        if (to === false) {
-            res.json({ a, v: 'false' })
-        } 
-        })
-}*/
 async function transConv(req, res){
     let data = await translator(req.body.convert, { to: req.body.to })
     a = data.text;
     to = findLang(req.body.to);
-    console.log(to)
     if (to === false) {
             res.json({ a, v: 'false' })
         } 
 }
-let response;
 async function resp(res) {
     
     try {
         const options = opt(to, a)
-         response = await axios.request(options)
+         let response = await axios.request(options)
         to = '';
-         console.log(response);
         res.json({ a, v: response.data });
     } catch (e) {
-        console.log(response);
         res.json({ a, v: "false" });
     }
 } 

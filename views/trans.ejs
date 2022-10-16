@@ -14,7 +14,7 @@
 
 <body>
     <div class="cont">
-        <h1 class="text-dark mx-auto text-center" style="margin:0px;">Welcome to Translator</h1>
+        <h1 class="mx-auto text-center">Welcome to Translator</h1>
         <form action="/" method="post" id="form">
             <div>
                 <label for="conv">Type Here</label>
@@ -22,8 +22,7 @@
             </div>
             <div style="display: flex;flex-direction:row;justify-content:space-around;width:15rem;">
                 <div>
-                    <select id="langToConvert" name="to" class="form-select form-select-lg border-primary"
-                        style="border-radius: 5%; width: 150px;background-color: rgb(233, 248, 243);color: black;">
+                    <select id="langToConvert" name="to" class="form-select form-select-lg border-primary">
                         <option value=""></option>
                         <option value=""></option>
                         <option value=""></option>
@@ -133,14 +132,14 @@
                         <option value=""></option>
                     </select>
                 </div>
-                <button class="btn btn-dark" id="swap"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                <button class="btn" id="swap"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                         fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
                             d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z" />
                     </svg></button>
             </div>
             <div>
-                <textarea name="answer" class="form-control border-info" id="ans">
+                <textarea name="answer" class="form-control border-info" id="ans" disabled>
                     <%= answer %></textarea>
             </div>
             <button type="submit" class="btn btn-primary" id="submits">Translate</button>

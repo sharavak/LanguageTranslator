@@ -5,9 +5,9 @@ const swap = document.querySelector("#swap");
 const clear = document.querySelector("#clear");
 const speak = document.querySelector('#speak')
 const submit = document.querySelector("#form");
+let trans = document.querySelector('#submits');
 const audio = document.querySelector('audio');
 const languages = lan();
-let d = '';
 const keys = Object.keys(languages);
 const values = Object.values(languages);
 const l = ['gu', 'kn', 'ml', 'te', 'pa', 'mr']
@@ -39,19 +39,24 @@ speak.addEventListener('click', async () => {
          speechSynthesis.speak(voice);
       }
    }else if(ans .innerHTML.trim() == '')  {
-      let voice = new SpeechSynthesisUtterance("There is no text to speak");
-      speechSynthesis.speak(voice);
+      defaultSpeak();
    }
    else
       audio.play();
 })
-submit.addEventListener('submit',  (e) => {
+submit.addEventListener('submit', (e) => {
+   trans.innerHTML = 'Translating...';
    e.preventDefault();
-   audio.src = '';
-   if (datas.value.trim() == '')
+   
+   if (ans.innerHTML.trim() === '')
    {
-      let voice = new SpeechSynthesisUtterance("There is no text to speak");
-      speechSynthesis.speak(voice);
+      audio.src = '';
+      if (datas.value.trim() === '') {
+         datas.innerHTML = 'Please type here!!!'
+         trans.innerHTML = 'Translate';
+      } else {
+         put();
+      }
    }
    else
       put();
@@ -66,14 +71,16 @@ async function put() {
        body: data
    });
    let res = await data.json();
-         console.log(res.v);
-
    if (res.v.includes('false')) {
-      console.log(res.v);
       audio.src = ''
    }
    else {
       audio.src = res.v;
    }
-   ans.innerHTML=res.a
+   ans.innerHTML = res.a
+      trans.innerHTML = 'Translate';
+}
+function defaultSpeak() {
+      let voice = new SpeechSynthesisUtterance("There is no text to speak");
+      speechSynthesis.speak(voice);
 }

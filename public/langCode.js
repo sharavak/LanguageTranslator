@@ -87,7 +87,6 @@ const lan = () => {
         'sd': 'Sindhi',
         'si': 'Sinhala',
         'sk': 'Slovak',
-        'sl': 'Slovenian',
         'so': 'Somali',
         'es': 'Spanish',
         'su': 'Sundanese',
@@ -102,10 +101,7 @@ const lan = () => {
         'ur': 'Urdu',
         'uz': 'Uzbek',
         'vi': 'Vietnamese',
-        'cy': 'Welsh',
         'xh': 'Xhosa',
-        'yi': 'Yiddish',
-        'yo': 'Yoruba',
         'zu': 'Zulu'
     }
 }
