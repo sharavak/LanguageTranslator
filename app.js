@@ -72,13 +72,14 @@ async function transConv(req, res){
         } 
 }
 async function resp(res) {
+    let response;
     try {
         const options = opt(to, a)
-        let response = await axios.request(options)
+         response = await axios.request(options)
         to = '';
         res.json({ a, v: response.data });
     } catch (e) {
-        console.log("ERROR", response.data );
+        console.log("ERROR", response.data);
         res.json({ a, v: "false" });
     }
 } 
