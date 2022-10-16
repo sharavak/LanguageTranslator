@@ -81,7 +81,7 @@ async function resp(res) {
          console.log(response);
         res.json({ a, v: response.data });
     } catch (e) {
-        console.log(response.data);
+        console.log(response);
         res.json({ a, v: "false" });
     }
 } 
