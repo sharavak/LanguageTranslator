@@ -83,4 +83,6 @@ async function resp(res) {
         res.json({ a, v: "false" });
     }
 } 
-app.listen(PORT, '0.0.0.0');
+app.listen(3000, () => {
+     app.listen(PORT ,'0.0.0.0');
+})
